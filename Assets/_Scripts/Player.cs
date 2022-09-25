@@ -9,9 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField] byte swipeSpeed = 3;
     float xDir;
 
-    private void FixedUpdate()
+    private void Update()
     {
         xDir = joystick.Horizontal;
-        transform.Translate(new Vector3(xDir * 3,0,1) * playerSpeed * Time.deltaTime);
+        transform.Translate(new Vector3(xDir ,0,1).normalized * playerSpeed * Time.deltaTime);
     }
 }
