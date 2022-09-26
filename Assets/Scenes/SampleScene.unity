@@ -370,13 +370,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5183627527038359842, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5183627527038359847, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
       propertyPath: m_Name
       value: Collectible Item (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 5183627527038359847, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
-      propertyPath: m_TagString
-      value: Collectible
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5183627527038359840, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.81
+      value: -1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5183627527038359840, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
       propertyPath: m_LocalPosition.y
@@ -430,6 +430,10 @@ PrefabInstance:
     - target: {fileID: 5183627527038359840, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5183627527038359842, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5183627527038359847, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
       propertyPath: m_Name
@@ -1082,7 +1086,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   joystick: {fileID: 1178038193}
   playerSpeed: 8
-  swipeSpeed: 3
 --- !u!54 &1383868652
 Rigidbody:
   m_ObjectHideFlags: 0

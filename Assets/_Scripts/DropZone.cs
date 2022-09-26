@@ -6,6 +6,7 @@ public class DropZone : MonoBehaviour
 {
     [SerializeField] private int requireScore;
     private int ballScore;
+    public bool isCoroutine;
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Collectible"))
@@ -16,13 +17,31 @@ public class DropZone : MonoBehaviour
 
             if(ballScore == requireScore)
             {
-                //coroutine kullan belli bir saniye beklet
                 //kapaklar açýlsýn
-                transform.GetChild(0).gameObject.SetActive(true);
-                Player.Instance.PlayerSpeed = 8f;
+                StartCoroutine(DelayForDropZoneCoroutine());
                 ballScore = 0;
+                if (!isCoroutine)
+                    BallManager.Instance.BallList.Remove(other.gameObject);
             }
 
         }
+    }
+
+    IEnumerator DelayForDropZoneCoroutine()
+    {
+        isCoroutine = true;
+
+        yield return new WaitForSeconds(0.2f);
+        BallManager.Instance.BlastAllBalls();
+
+        yield return new WaitForSeconds(0.3f);
+
+        yield return new WaitForSeconds(0.4f);
+        transform.GetChild(0).gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(0.7f);
+        Player.Instance.SpeedUp();
+
+        isCoroutine = false;
     }
 }

@@ -16,13 +16,20 @@ public class BallManager : MonoBehaviour
         Instance = this;
     }
 
+    public void BlastAllBalls()
+    {
+        foreach (GameObject ball in ballList)
+        {
+            ball.GetComponent<MeshRenderer>().enabled = false;
+        }
+    }
+
     public void PushBalls()
     {
         foreach(GameObject ball in ballList)
         {
-            ball.transform.DOMoveZ(ball.transform.position.z + Random.Range(5f, 7f), 0.5f);
+            ball.transform.DOMove(new Vector3(ball.transform.position.x + Random.Range(-1f, 1f), ball.transform.position.y, ball.transform.position.z + Random.Range(5f, 7f)), 0.2f);
         }
     }
-
 
 }

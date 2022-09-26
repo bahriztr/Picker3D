@@ -8,7 +8,6 @@ public class Player : MonoBehaviour
 
     [SerializeField] private FloatingJoystick joystick;
     [SerializeField] float playerSpeed = 8f;
-    [SerializeField] float swipeSpeed = 3f;
     float xDir;
 
     public float PlayerSpeed { get => playerSpeed; set => playerSpeed = value; }
@@ -24,15 +23,25 @@ public class Player : MonoBehaviour
         transform.Translate(new Vector3(xDir ,0,1).normalized * PlayerSpeed * Time.deltaTime);
     }
 
+    public void SpeedUp()
+    {
+        playerSpeed = 8f;
+    }
+
+    public void SpeedDown()
+    {
+        playerSpeed = 0f;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag("Collectible"))
             BallManager.Instance.BallList.Add(other.gameObject);
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Collectible"))
-            BallManager.Instance.BallList.Remove(other.gameObject);
-    }
+    //private void OnTriggerExit(Collider other)
+    //{
+    //    if (other.CompareTag("Collectible"))
+    //        BallManager.Instance.BallList.Remove(other.gameObject);
+    //}
 }
