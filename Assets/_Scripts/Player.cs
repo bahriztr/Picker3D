@@ -23,4 +23,16 @@ public class Player : MonoBehaviour
         xDir = joystick.Horizontal;
         transform.Translate(new Vector3(xDir ,0,1).normalized * PlayerSpeed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.CompareTag("Collectible"))
+            BallManager.Instance.BallList.Add(other.gameObject);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("Collectible"))
+            BallManager.Instance.BallList.Remove(other.gameObject);
+    }
 }

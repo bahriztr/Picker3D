@@ -18,7 +18,7 @@ public class DropZone : MonoBehaviour
             {
                 //coroutine kullan belli bir saniye beklet
                 //kapaklar açýlsýn
-                //animasyonu oynat
+                transform.GetChild(0).gameObject.SetActive(true);
                 Player.Instance.PlayerSpeed = 8f;
                 ballScore = 0;
             }
