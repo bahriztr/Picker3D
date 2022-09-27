@@ -21,7 +21,6 @@ public class DropZone : MonoBehaviour
                 StartCoroutine(DelayForDropZoneCoroutine());
                 ballScore = 0;
             }
-
         }
     }
 
