@@ -370,10 +370,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5183627527038359842, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5183627527038359847, guid: ff95f65ef05bebc4f941e8102c87c304, type: 3}
       propertyPath: m_Name
       value: Collectible Item (1)
@@ -1101,7 +1097,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
+  m_CollisionDetection: 3
 --- !u!65 &1383868655
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1113,8 +1109,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.029880008, y: 0.010811169, z: 0.039801214}
-  m_Center: {x: -0.000039997587, y: -0.0028632532, z: 0.020099387}
+  m_Size: {x: 0.029880008, y: 0.010094534, z: 0.039801225}
+  m_Center: {x: -0.000039997587, y: -0.0032215612, z: 0.020099387}
 --- !u!1001 &1490736469
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1308,6 +1304,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1255729675, guid: 64cb8430c7a72124ab178045e4c3eb0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2933655188148627117, guid: 64cb8430c7a72124ab178045e4c3eb0f, type: 3}
       propertyPath: m_RootOrder
       value: 8

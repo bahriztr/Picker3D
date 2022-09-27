@@ -7,7 +7,7 @@ public class BallManager : MonoBehaviour
 {
     public static BallManager Instance;
 
-    public List<GameObject> ballList = new List<GameObject>();
+    private List<GameObject> ballList = new List<GameObject>();
 
     public List<GameObject> BallList { get => ballList; set => ballList = value; }
 
@@ -20,15 +20,15 @@ public class BallManager : MonoBehaviour
     {
         foreach (GameObject ball in ballList)
         {
-            ball.GetComponent<MeshRenderer>().enabled = false;
+            ball.gameObject.SetActive(false);
         }
     }
 
     public void PushBalls()
     {
-        foreach(GameObject ball in ballList)
+        foreach (GameObject ball in ballList)
         {
-            ball.transform.DOMove(new Vector3(ball.transform.position.x + Random.Range(-1f, 1f), ball.transform.position.y, ball.transform.position.z + Random.Range(5f, 7f)), 0.2f);
+            ball.transform.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-5f,5f),0,Random.Range(15f,18f));
         }
     }
 
