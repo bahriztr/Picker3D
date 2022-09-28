@@ -37,18 +37,5 @@ public class Player : MonoBehaviour
     {
         if(other.CompareTag("Collectible"))
             BallManager.Instance.BallList.Add(other.gameObject);
-
-        if (other.CompareTag("FirstPath"))
-            GameManager.Instance.FirstPathPlacement();
-        else if (other.CompareTag("SecondPath"))
-            GameManager.Instance.SecondPathPlacement();
-        else if (other.CompareTag("ThirdPath"))
-            GameManager.Instance.ThirdPathPlacement();
     }
-
-    //private void OnTriggerExit(Collider other)
-    //{
-    //    if (other.CompareTag("Collectible"))
-    //        BallManager.Instance.BallList.Remove(other.gameObject);
-    //}
 }
