@@ -26,18 +26,19 @@ public class DropZone : MonoBehaviour
 
     IEnumerator DelayForDropZoneCoroutine()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.6f);
         BallManager.Instance.BlastAllBalls();
 
-        //yield return new WaitForSeconds(0.3f);
-
-        yield return new WaitForSeconds(0.4f);
+        yield return new WaitForSeconds(0.8f);
         transform.GetChild(0).gameObject.SetActive(true);
 
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.9f);
+        GateController.Instance.GateControl();
+
+        yield return new WaitForSeconds(1.1f);
         Player.Instance.SpeedUp();
 
-        yield return new WaitForSeconds(0.9f);
+        yield return new WaitForSeconds(1.3f);
         BallManager.Instance.BallList.Clear();
     }
 }

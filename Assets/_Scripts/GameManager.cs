@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private GameObject[] firstPathArray, secondPathArray, thirdPathArray;
 
-    public Transform firstPathTransform, secondPathTransform, thirdPathTransform;
+    [HideInInspector] public Transform firstPathTransform, secondPathTransform, thirdPathTransform;
 
-    private GameObject go1, go2, go3;
+    private GameObject activeRoad;
 
     private void Awake()
     {
@@ -27,48 +27,54 @@ public class GameManager : MonoBehaviour
 
     public void FirstPathPlacement()
     {
-        GameObject go1 = firstPathArray[Random.Range(0, 10)];
-        go1.SetActive(true);
-        go1.transform.position = firstPathTransform.position + new Vector3(0, 0, 270);
+        activeRoad = firstPathArray[Random.Range(0, 10)];
+        activeRoad.SetActive(true);
+        activeRoad.transform.position = firstPathTransform.position + new Vector3(0, 0, 270);
     }
 
     public void SecondPathPlacement()
     {
-        GameObject go2 = secondPathArray[Random.Range(0, 10)];
-        go2.SetActive(true);
-        go2.transform.position = secondPathTransform.position + new Vector3(0, 0, 270);
+        activeRoad = secondPathArray[Random.Range(0, 10)];
+        activeRoad.SetActive(true);
+        activeRoad.transform.position = secondPathTransform.position + new Vector3(0, 0, 270);
     }
 
     public void ThirdPathPlacement()
     {
-        GameObject go3 = thirdPathArray[Random.Range(0, 10)];
-        go3.SetActive(true);
-        go3.transform.position = thirdPathTransform.position + new Vector3(0, 0, 270);
+        activeRoad = thirdPathArray[Random.Range(0, 10)];
+        activeRoad.SetActive(true);
+        activeRoad.transform.position = thirdPathTransform.position + new Vector3(0, 0, 270);
     }
 
     public void FirstReUsePath(GameObject go)
     {
-        if(firstPathArray[firstPathArray.Length - 1] == null)
+        if (firstPathArray[firstPathArray.Length - 1] == null)
         {
-            go.transform.parent.gameObject.SetActive(false);
             firstPathArray[firstPathArray.Length - 1] = go.transform.parent.gameObject;
         }
+
+        go.transform.parent.gameObject.SetActive(false);
+        firstPathTransform = go.transform.parent.gameObject.transform;
     }
     public void SecondReUsePath(GameObject go)
     {
         if (secondPathArray[secondPathArray.Length - 1] == null)
         {
             secondPathArray[secondPathArray.Length - 1] = go.transform.parent.gameObject;
-            go.transform.parent.gameObject.SetActive(false);
         }
+
+        secondPathTransform = go.transform.parent.gameObject.transform;
+        go.transform.parent.gameObject.SetActive(false);
     }
     public void ThirdReUsePath(GameObject go)
     {
         if (thirdPathArray[thirdPathArray.Length - 1] == null)
         {
             thirdPathArray[thirdPathArray.Length - 1] = go.transform.parent.gameObject;
-            go.transform.parent.gameObject.SetActive(false);
         }
+
+        go.transform.parent.gameObject.SetActive(false);
+        thirdPathTransform = go.transform.parent.gameObject.transform;
     }
 
 }
