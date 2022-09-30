@@ -7,7 +7,7 @@ public class BallManager : MonoBehaviour
 {
     public static BallManager Instance;
 
-    private List<GameObject> ballList = new List<GameObject>();
+    public List<GameObject> ballList = new List<GameObject>();
 
     public List<GameObject> BallList { get => ballList; set => ballList = value; }
 
@@ -28,7 +28,7 @@ public class BallManager : MonoBehaviour
     {
         foreach (GameObject ball in ballList)
         {
-            ball.transform.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-5f,5f),0,Random.Range(15f,18f));
+            ball.transform.GetComponent<Rigidbody>().velocity = new Vector3(Random.Range(-5f,5f),0,Random.Range(12f,16f));
         }
     }
 

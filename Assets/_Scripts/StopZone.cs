@@ -9,7 +9,8 @@ public class StopZone : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             Player.Instance.SpeedDown();
+            BallManager.Instance.PushBalls();
         }
-        BallManager.Instance.PushBalls();
     }
+    
 }

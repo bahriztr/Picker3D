@@ -10,7 +10,27 @@ public class GameManager : MonoBehaviour
 
     [HideInInspector] public Transform firstPathTransform, secondPathTransform, thirdPathTransform;
 
+    private Vector3 addRoadDistance = new Vector3(0, 0, 3000);
+
+    [HideInInspector] public int ballScore;
+
+    public Vector3 startPos
+    {
+        get
+        {
+            return new Vector3(0, 0.5f, PlayerPrefs.GetFloat("startPosZ", -167.7f));
+        }
+        set
+        {
+            PlayerPrefs.SetFloat("startPosZ", value.z);
+        }
+    }
+
     private GameObject activeRoad;
+
+    [SerializeField] Transform levelRoadsParent;
+
+    public int setLevelTo;
 
     private void Awake()
     {
@@ -22,59 +42,44 @@ public class GameManager : MonoBehaviour
         firstPathTransform = firstPathArray[0].transform;
         secondPathTransform = secondPathArray[0].transform;
         thirdPathTransform = thirdPathArray[0].transform;
-        //90 arttýr.
     }
 
     public void FirstPathPlacement()
     {
-        activeRoad = firstPathArray[Random.Range(0, 10)];
-        activeRoad.SetActive(true);
-        activeRoad.transform.position = firstPathTransform.position + new Vector3(0, 0, 270);
+        activeRoad = firstPathArray[Random.Range(1, 10)];
+        activeRoad.transform.position = firstPathTransform.position + addRoadDistance;
+        Instantiate(activeRoad, activeRoad.transform.position, Quaternion.identity);
     }
 
     public void SecondPathPlacement()
     {
-        activeRoad = secondPathArray[Random.Range(0, 10)];
-        activeRoad.SetActive(true);
-        activeRoad.transform.position = secondPathTransform.position + new Vector3(0, 0, 270);
+        activeRoad = secondPathArray[Random.Range(1, 10)];
+        activeRoad.transform.position = secondPathTransform.position + addRoadDistance;
+        Instantiate(activeRoad, activeRoad.transform.position, Quaternion.identity);
     }
 
     public void ThirdPathPlacement()
     {
-        activeRoad = thirdPathArray[Random.Range(0, 10)];
-        activeRoad.SetActive(true);
-        activeRoad.transform.position = thirdPathTransform.position + new Vector3(0, 0, 270);
+        activeRoad = thirdPathArray[Random.Range(1, 10)];
+        activeRoad.transform.position = thirdPathTransform.position + addRoadDistance;
+        Instantiate(activeRoad, activeRoad.transform.position, Quaternion.identity);
     }
 
     public void FirstReUsePath(GameObject go)
     {
-        if (firstPathArray[firstPathArray.Length - 1] == null)
-        {
-            firstPathArray[firstPathArray.Length - 1] = go.transform.parent.gameObject;
-        }
-
-        go.transform.parent.gameObject.SetActive(false);
+        Destroy(go.transform.parent.gameObject);
         firstPathTransform = go.transform.parent.gameObject.transform;
     }
     public void SecondReUsePath(GameObject go)
     {
-        if (secondPathArray[secondPathArray.Length - 1] == null)
-        {
-            secondPathArray[secondPathArray.Length - 1] = go.transform.parent.gameObject;
-        }
-
+        Destroy(go.transform.parent.gameObject);
         secondPathTransform = go.transform.parent.gameObject.transform;
-        go.transform.parent.gameObject.SetActive(false);
+        
     }
     public void ThirdReUsePath(GameObject go)
     {
-        if (thirdPathArray[thirdPathArray.Length - 1] == null)
-        {
-            thirdPathArray[thirdPathArray.Length - 1] = go.transform.parent.gameObject;
-        }
-
-        go.transform.parent.gameObject.SetActive(false);
+        Destroy(go.transform.parent.gameObject);
         thirdPathTransform = go.transform.parent.gameObject.transform;
+        
     }
-
 }

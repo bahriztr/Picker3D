@@ -8,6 +8,9 @@ TagManager:
   - FirstPath
   - SecondPath
   - ThirdPath
+  - FirstGate
+  - SecondGate
+  - ThirdGate
   layers:
   - Default
   - TransparentFX

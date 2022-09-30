@@ -8,18 +8,23 @@ public class RoadDetect : MonoBehaviour
     {
         if (other.CompareTag("FirstPath"))
         {
-            GameManager.Instance.FirstPathPlacement();
             GameManager.Instance.FirstReUsePath(other.gameObject);
         }
+
         else if (other.CompareTag("SecondPath"))
         {
-            GameManager.Instance.SecondPathPlacement();
             GameManager.Instance.SecondReUsePath(other.gameObject);
         }
+
         else if (other.CompareTag("ThirdPath"))
         {
+            GameManager.Instance.FirstPathPlacement();
+            GameManager.Instance.SecondPathPlacement();
             GameManager.Instance.ThirdPathPlacement();
             GameManager.Instance.ThirdReUsePath(other.gameObject);
         }
+
     }
+
 }
+
